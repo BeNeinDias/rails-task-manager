@@ -3,13 +3,23 @@
   <%= link_to "Edit task", edit_path(@task), class: 'btn btn-primary' %>
 </div>
 
-<div class="details_div">
+<div class="details-div">
   <p><%= @task.details %></p>
 </div>
-<h2><%="#{@task.completed ? '[x] This task is completed!' : '[ ] This task is not completed yet!' }" %></h2>
+  <% if @task.completed %>
+  <div class="completed">
+    <img src="https://img.icons8.com/metro/50/000000/checked-checkbox.png">
+    <p>This task is not completed yet</p>
+  </div>
+  <% else %>
+  <div class="completed">
+    <img src="https://img.icons8.com/metro/50/000000/unchecked-checkbox.png">
+    <p>This task is completed</p>
+  </div>
+  <% end %>
 
 <p>
-  <%= link_to "Delete task", task_path(@task), method: :delete %>
+  <%= link_to "Delete task", task_path(@task), method: :delete, data: { confirm: "Are you sure?"} %>
 </p>
 <p>
   <%= link_to "Go back to tasks", root_path %>
