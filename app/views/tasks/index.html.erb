@@ -1,0 +1,20 @@
+<div class="show-container">
+  <h1>My Tasks</h1>
+
+    <% @tasks.each do |task| %>
+      <div class="show-tasks">
+        <% if task.completed %>
+          <img src="https://img.icons8.com/metro/50/000000/checked-checkbox.png">
+        <% else %>
+          <img src="https://img.icons8.com/metro/50/000000/unchecked-checkbox.png">
+        <% end %>
+        <h2><%= link_to task.title, task_path(task) %></h2>
+      </div>
+    <% end %>
+
+
+
+  <p>
+    <%= link_to "Add a new task", new_path %>
+  </p>
+</div>
